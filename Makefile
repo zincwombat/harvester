@@ -3,7 +3,8 @@ PKG_REVISION    ?= $(shell git describe --tags)
 PKG_BUILD        = 1
 BASE_DIR         = $(shell pwd)
 ERLANG_BIN       = $(shell dirname $(shell which erl))
-REBAR           =  "rebar -vvv"
+REBAR           =  rebar
+REBAR_OPTS	=  "--verbose 3"
 OVERLAY_VARS    ?=
 
 $(if $(ERLANG_BIN),,$(warning "Warning: No Erlang found in your path, this will probably not work"))
@@ -19,19 +20,19 @@ delete_arachnid:
 	rm -rf deps/arachnid
 
 compile:
-	$(REBAR) compile
+	$(REBAR) $(REBAR_OPTS) compile
 
 deps:
-	$(REBAR) get-deps
+	$(REBAR) $(REBAR_OPTS) get-deps
 
 clean: testclean
-	$(REBAR) clean
+	$(REBAR) $(REBAR_OPTS) clean
 
 distclean: clean devclean relclean ballclean
-	$(REBAR) delete-deps
+	$(REBAR) $(REBAR_OPTS) delete-deps
 
 generate:
-	$(REBAR)  --force generate $(OVERLAY_VARS)
+	$(REBAR) $(REBAR_OPTS) --force generate $(OVERLAY_VARS)
 
 
 ##

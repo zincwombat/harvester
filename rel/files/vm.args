@@ -5,7 +5,7 @@
 -setcookie harvester
 
 ## mnesia directory
--mnesia dir /tmp/mnesia_db
+-mnesia dir "/tmp/mnesia_db"
 
 ## Heartbeat management; auto-restarts VM if it dies or becomes unresponsive
 ## (Disabled by default..use with caution!)

@@ -17,8 +17,8 @@ $(if $(ERLANG_BIN),,$(warning "Warning: No Erlang found in your path, this will 
 
 all:	deps compile
 
-redo:   delete_arachnid deps compile generate
-        @echo "done"
+redo:	delete_arachnid deps compile generate
+		@echo "done"
 
 init:   dirs
         @echo "BASE_DIR is: $(BASE_DIR)"

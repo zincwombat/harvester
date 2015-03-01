@@ -29,30 +29,30 @@ init:   dirs
 dirs:   $(DATA_DIR)
 
 link:   dirs
-        ln -s $(DATA_DIR)/upload $(DIST_DATA_DIR)/upload
-        ln -s $(DATA_DIR)/results $(DIST_DATA_DIR)/results
+		ln -s $(DATA_DIR)/upload $(DIST_DATA_DIR)/upload
+		ln -s $(DATA_DIR)/results $(DIST_DATA_DIR)/results
 
 $(DATA_DIR):
-        mkdir -p $@/results
-        mkdir -p $@/upload
+		mkdir -p $@/results
+		mkdir -p $@/upload
 
 delete_arachnid:
-        rm -rf deps/arachnid
+		rm -rf deps/arachnid
 
 compile:
-        $(REBAR) $(REBAR_OPTS) compile
+		$(REBAR) $(REBAR_OPTS) compile
 
 deps:
-        $(REBAR) $(REBAR_OPTS) get-deps
+		$(REBAR) $(REBAR_OPTS) get-deps
 
 clean: testclean
-        $(REBAR) $(REBAR_OPTS) clean
+		$(REBAR) $(REBAR_OPTS) clean
 
 distclean: clean devclean relclean ballclean
-        $(REBAR) $(REBAR_OPTS) delete-deps
+		$(REBAR) $(REBAR_OPTS) delete-deps
 
 generate:
-        $(REBAR) $(REBAR_OPTS) --force generate $(OVERLAY_VARS)
+		$(REBAR) $(REBAR_OPTS) --force generate $(OVERLAY_VARS)
 
 rel: init deps compile generate
 ~                                         

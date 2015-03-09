@@ -1,0 +1,8 @@
+%% -*- mode: erlang; -*-
+{application, harvester,
+ [{description, "Harvester Application"},
+  {vsn, "1.0.0."},
+  {modules, []},
+  {registered, []},
+  {applications, [kernel, stdlib]},
+  {env, []}]}.

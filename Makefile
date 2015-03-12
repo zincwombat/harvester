@@ -54,4 +54,6 @@ distclean: clean devclean relclean ballclean
 generate:
 		$(REBAR) $(REBAR_OPTS) --force generate $(OVERLAY_VARS)
 
-rel: init deps compile generate link                                
+rel: init deps compile generate link 
+
+relnodeps: init compile generate link                              

@@ -1,6 +1,6 @@
 %% -*- mode: erlang; -*-
 {application, harvester,
- [{description, "Harvester Application"},
+ [{description, "Harvester Master Application"},
   {vsn, "1.0.0."},
   {modules, []},
   {registered, []},

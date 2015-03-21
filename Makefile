@@ -13,7 +13,7 @@ OVERLAY_VARS    ?=
 
 $(if $(ERLANG_BIN),,$(warning "Warning: No Erlang found in your path, this will probably not work"))
 
-.PHONY: rel deps redo delete_arachnid get_arachnid init dirs
+.PHONY: rel deps redo delete_arachnid get_arachnid init dirs link unlink all compile
 
 all:	deps compile
 
@@ -28,9 +28,13 @@ init:   dirs
 
 dirs:   $(DATA_DIR)
 
-link:   dirs
+link:   unlink dirs
 		ln -s $(DATA_DIR)/upload $(DIST_DATA_DIR)/upload
 		ln -s $(DATA_DIR)/results $(DIST_DATA_DIR)/results
+
+unlink:	
+		-rm -f $(DIST_DATA_DIR)/upload
+		-rm -f $(DIST_DATA_DIR)/results
 
 $(DATA_DIR):
 		mkdir -p $@/results
@@ -56,4 +60,4 @@ generate:
 
 rel: init deps compile generate link 
 
-relnodeps: init compile generate link                              
+relnodeps: init compile generate                              
